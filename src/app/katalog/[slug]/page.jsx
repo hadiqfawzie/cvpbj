@@ -1,17 +1,22 @@
 import Image from "next/image";
-import Card from "./components/Card";
-import supabase from "../../utils/supabase";
 
-export const revalidate = 30
+import Card from "@/app/components/Card";
+import supabase from "../../../../utils/supabase";
 
-export default async function Home() {  
-  const { data : katalog, error } = await supabase.from('katalog').select('').or('peruntukan.eq.desa,peruntukan.eq.all').order('id', { ascending: true });
+export default async function Katalog({params}) {  
+  let peruntukan = 'peruntukan.eq.desa,peruntukan.eq.all'
+  if(params.slug == 'sekolah'){
+    peruntukan = 'peruntukan.eq.sekolah,peruntukan.eq.all'
+  }
+  
+  const { data : katalog, error } = await supabase.from('katalog').select('').or(peruntukan).order('id', { ascending: true });
   
   if (error) {
     console.log(error.message);
   }
   return (
     <>
+        
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 gap-1">
        {katalog.map((brg,idx) => (
           
