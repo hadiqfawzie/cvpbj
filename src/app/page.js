@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Card from "./components/Card";
 import supabase from "../../utils/supabase";
+import Link from "next/link";
 
 export const revalidate = 30
 
@@ -20,7 +21,8 @@ export default async function Home() {
                 hargaAsal={(brg.harga + (brg.harga * brg.diskon / 100)).toLocaleString("id-ID")} 
                 />        
         ))}
-      </div>           
+      </div>   
+         
     </>
   );
 }
