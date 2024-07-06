@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
         <div className="fixed top-0 left-0 right-0">
           <Nav />
         </div>
-        <div className="m-1 mt-20">
+        <div className="m-1 mt-20 mb-12">
           {children}
         </div>
         <Footer />
