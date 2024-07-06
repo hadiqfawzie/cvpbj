@@ -1,8 +1,14 @@
 'use client'
 import { CldImage } from 'next-cloudinary';
+import ModalComp from './ModalComp';
+import { createContext, useState } from 'react';
+
+export const MyContext = createContext()
 
 const Card = (props) => {
+    const [show, setShow] = useState(false)
     const {
+        id,
         foto,
         deskripsi,
         bintang,
@@ -13,7 +19,7 @@ const Card = (props) => {
 
     return (
         <>
-            <div className="w-full max-w-sm bg-gray-800 border border-gray-700 rounded-lg shadow-sm 
+            <div className="w-full relative max-w-sm bg-gray-800 border border-gray-700 rounded-lg shadow-sm 
                           shadow-yellow-200 dark:bg-gray-800 dark:border-gray-700 pb-1">
                 <a href="#">
                     {/* <img className="p-1 rounded-t-lg" src={`/img/desa/${foto}`} alt="product image" /> */}
@@ -22,11 +28,10 @@ const Card = (props) => {
                         width="400" // Transform the image: auto-crop to square aspect_ratio
                         height="300"
                         alt="foto-barang"
-
                     />
                 </a>
                 <div className='-mt-[125px] mb-24 ml-1'>
-                    <img className='w-8 h-8 opacity-60' src='/logo.svg' alt='logo' />
+                    <img className='w-6 h-6' src='/logo.svg' alt='logo' />
                 </div>
                 <div className="px-1 pb-1">
                     <a href="#">
@@ -50,11 +55,18 @@ const Card = (props) => {
                             <span className="bg-red-600 text-yellow-200 text-xs font-bold px-1 py-0.5 
                                             -mr-2.5 rounded-r-sm ">-{diskon}%</span>
                         </div>
-                        <div class="line-through text-slate-400 text-sm">Rp. {hargaAsal}</div>
+                        <div class="line-through text-slate-400 text-sm mb-8">Rp. {hargaAsal}</div>
                     </div>
                 </div>
+            <div className=' absolute bottom-0 left-0'>
+                <button className='p-2 text-yellow-400 dark:text-yellow-400 text-sm italic font-semibold' 
+                    onClick={() => setShow(true)}>Detil</button>
+            </div>
             </div>
 
+            <MyContext.Provider value={[show, setShow]}>
+                {show && <ModalComp id={id} foto={foto} deskripsi={deskripsi} bintang={bintang} harga={harga} diskon={diskon} hargaAsal={hargaAsal} />}
+            </MyContext.Provider>
         </>
     );
 }
