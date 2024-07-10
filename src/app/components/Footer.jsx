@@ -8,13 +8,15 @@ const Footer = () => {
   const [search, setSearch] = useState()
   const router = useRouter()
 
-  const handleSubmit = ()=>{
-    router.push(`/katalog/${search}`)
+  const handleSubmit = (e)=>{
+    e.preventDefault()
+    // router.push(`/katalog/${search}`)
+    window.history.replaceState(null,'',`/katalog/${search}`)
   }
   return (
     <>
       <div className="w-full fixed bottom-0 flex justify-center gap-2 ">
-        <form onSubmit={handleSubmit} className="w-5/6">
+        <form className="w-5/6">
           <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
           <div className="relative">
             <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -28,11 +30,11 @@ const Footer = () => {
               border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-50 
               dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray dark:focus:ring-blue-500 dark:focus:border-blue-500" 
               placeholder="Cari Nama Barang" required value={search} onChange={(e)=>setSearch(e.target.value)}/>
-            <button type="submit" className="text-white absolute end-2 bottom-2.5  focus:ring-4 
+            <Link href={`/katalog/${search}`} className="text-white absolute end-2 bottom-2.5  focus:ring-4 
               focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm bg-white dark:bg-white 
               dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                 <img className="w-8 h-8" src="/enter1.png" alt="enter" />
-              </button>
+              </Link>
           </div>
         </form>
 
