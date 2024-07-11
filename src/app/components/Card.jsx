@@ -33,9 +33,9 @@ const Card = (props) => {
                 <div className='-mt-[125px] mb-24 ml-1'>
                     <img className='w-6 h-6' src='/logo.svg' alt='logo' />
                 </div>
-                <div className="px-1 pb-1">
+                <div className="px-1 py-1">
                     <a href="#">
-                        <h5 className="text-sm tracking-tight text-white dark:text-white px-1">
+                        <h5 className="text-sm tracking-tight text-white dark:text-white px-1 leading-4">
                             {deskripsi}
                         </h5>
                     </a>
