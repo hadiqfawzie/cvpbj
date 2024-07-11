@@ -52,8 +52,8 @@ const Card = (props) => {
                     <div className="px-1">
                         <div className="flex items-center justify-between">
                             <div className="text-sm font-bold text-white dark:text-white">Rp. {harga}</div>
-                            <span className="bg-red-600 text-yellow-200 text-xs font-bold px-1 py-0.5 
-                                            -mr-2.5 rounded-r-sm ">-{diskon}%</span>
+                            <span className="bg-red-600 border-r-4 text-yellow-200 text-xs font-bold px-1 py-0.5 
+                                            -mr-2.5 rounded-r-sm">-{diskon}%</span>
                         </div>
                         <div class="line-through text-slate-400 text-sm mb-8">Rp. {hargaAsal}</div>
                     </div>
