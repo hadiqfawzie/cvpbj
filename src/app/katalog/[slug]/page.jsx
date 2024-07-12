@@ -4,29 +4,15 @@ import Card from "@/app/components/Card";
 import supabase from "../../../../utils/supabase";
 
 export default async function Katalog({params}) {
-  let hasil
-  if(params.slug == 'sekolah' || params.slug == 'desa'){
-
-    let peruntukan = 'peruntukan.eq.desa,peruntukan.eq.all'
-    if(params.slug == 'sekolah'){
-      peruntukan = 'peruntukan.eq.sekolah,peruntukan.eq.all'
-    }
-    
-    const { data : katalog, error } = await supabase.from('katalog').select('').or(peruntukan).order('id', { ascending: true });
-    hasil = katalog
+  const {data : katalog, error} = await supabase.from('katalog').select().ilike('deskripsi',`%${params.slug}%`)
+  
+  if (error) {
+    console.log(error.message);
   }
-  else{
-    const {data : katalog, error} = await supabase.from('katalog').select().ilike('deskripsi',`%${params.slug}%`)
-    hasil = katalog
-  }
- 
-  // if (error) {
-  //   console.log(error.message);
-  // }
   return (
     <>        
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 gap-1">
-       {hasil.map((brg,idx) => (
+       {katalog.map((brg,idx) => (
           
           <Card key={idx} id={brg.id} foto={brg.foto} deskripsi={brg.deskripsi} 
                 bintang={brg.bintang} harga={brg.harga.toLocaleString("id-ID")} diskon={brg.diskon} 

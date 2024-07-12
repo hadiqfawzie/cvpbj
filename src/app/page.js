@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Card from "./components/Card";
 import supabase from "../../utils/supabase";
 
@@ -13,15 +12,13 @@ export default async function Home() {
   return (
     <>
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 gap-1">
-       {katalog.map((brg,idx) => (
-          
+       {katalog.map((brg,idx) => (          
           <Card key={idx} id={brg.id} foto={brg.foto} deskripsi={brg.deskripsi} 
                 bintang={brg.bintang} harga={brg.harga.toLocaleString("id-ID")} diskon={brg.diskon} 
                 hargaAsal={(brg.harga + (brg.harga * brg.diskon / 100)).toLocaleString("id-ID")} 
                 />        
         ))}
-      </div>   
-         
+      </div>          
     </>
   );
 }
