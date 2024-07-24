@@ -13,7 +13,6 @@ const CreateKatalog = () => {
     const [diskon, setDiskon] = useState('')
     const [foto, setFoto] = useState('')
 
-
     const clearForm = () => {
         setDeskripsi('')
         setBintang('')
@@ -23,9 +22,7 @@ const CreateKatalog = () => {
 
     const addKatalog = async () => {
         if (!deskripsi || !bintang || !harga || !diskon || !foto) {
-
             alert('isian tidak boleh kosong')
-
         }
         else {
             const katalogBaru = { deskripsi, bintang, harga, diskon, foto };
@@ -34,8 +31,8 @@ const CreateKatalog = () => {
                     .from('katalog')
                     .insert(katalogBaru)
 
-                alert('Data berhasil ditambah ')
-                clearForm()
+                    alert('Data berhasil ditambah ')
+                    clearForm()
 
                 if (error) {
                     console.log(error)
@@ -45,7 +42,6 @@ const CreateKatalog = () => {
             }
         }
     };
-
 
     return (
         <>
@@ -76,7 +72,7 @@ const CreateKatalog = () => {
                             Bintang:
                             <input
                                 type="text" id="bintang" className="shadow appearance-none border rounded w-full py-2 px-3 
-                        text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 placeholder="ex: 4.5"
                                 value={bintang}
                                 onChange={(e) => { setBintang(e.target.value) }}
@@ -87,8 +83,8 @@ const CreateKatalog = () => {
                         <label htmlFor="harga" className="block text-gray-300 text-sm font-semibold mb-1">
                             Harga:
                             <input
-                                type="text" id="harga" className="shadow appearance-none border rounded w-full py-2 px-3 
-                            text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                type="text" id="harga" className="shadow appearance-none border rounded     
+                                    w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 placeholder="ex: 7300000"
                                 value={harga.replace(/[^0-9]/g, '')}
                                 onChange={(e) => { setHarga(e.target.value) }}
@@ -100,7 +96,7 @@ const CreateKatalog = () => {
                             Diskon :
                             <input
                                 type="text" id="harga" className="shadow appearance-none border rounded w-full py-2 px-3 
-                        text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 placeholder="ex: 9"
                                 value={diskon}
                                 onChange={(e) => { setDiskon(e.target.value) }}
