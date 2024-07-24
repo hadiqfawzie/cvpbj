@@ -86,9 +86,10 @@ const CreateKatalog = () => {
                                 type="text" id="harga" className="shadow appearance-none border rounded     
                                     w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 placeholder="ex: 7300000"
-                                value={harga.replace(/[^0-9]/g, '')}
+                                value={harga}
                                 onChange={(e) => { setHarga(e.target.value) }}
                             />
+                            <p className="text-xs italic">{Number(harga).toLocaleString("id-ID")}</p>
                         </label>
                     </div>
                     <div className="mt-2">

@@ -23,7 +23,7 @@ const Card = (props) => {
                           shadow-yellow-200 dark:bg-gray-800 dark:border-gray-700 pb-1">
                 <a href="#">
                     {/* <img className="p-1 rounded-t-lg" src={`/img/desa/${foto}`} alt="product image" /> */}
-                    <CldImage className='p-1 rounded-t-lg w-52 h-32'
+                    <CldImage className='p-1 rounded-t-lg w-full h-32'
                         src={foto} // Use this sample image or upload your own via the Media Explorer
                         width="400" // Transform the image: auto-crop to square aspect_ratio
                         height="300"
